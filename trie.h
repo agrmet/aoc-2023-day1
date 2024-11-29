@@ -20,7 +20,11 @@ public:
 	 * reached if there is or there is a match the 
 	 * function will return that digit
 	 */
-	int prefixMatch(string* start, string* end)
+	int prefixMatch(string* start, string* end);
+
+private:
+	char root;
+	std::vector<unique_ptr<Trie>> children;
 }
 
 
