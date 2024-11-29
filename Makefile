@@ -1,7 +1,11 @@
 main: solution
+	./solution.o
 
-solution: tree
-	g++ solution.cpp -o solution
+solution: solution.cpp trie.o 
+	g++ solution.cpp -o solution.o
 
-tree: 
-	g++ tree.cpp -o tree
+trie.o: trie.cpp
+	g++ -c trie.cpp -o trie.o
+
+clean:
+	rm -f solution.o trie.o
