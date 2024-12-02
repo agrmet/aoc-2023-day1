@@ -3,11 +3,15 @@
 
 using namespace std;
 
+bool isDigit(char c){
+	return (c >= 48 && c <= 57);
+}
+
 int sumOfString(string s){
 
 
-	int first_pointer = -1;
-	int last_pointer = -1;
+	int first_ascii = -1;
+	int last_ascii = -1;
 
 	for(int i=0; i < s.size(); i++){
 
@@ -16,28 +20,28 @@ int sumOfString(string s){
 		int ascii_first = s[i];
 		int ascii_last = s[j];
 
-		if(ascii_first >= 48 && ascii_first <= 57){
+		if(isDigit(ascii_first)){
 
-			if(first_pointer == -1){
-			first_pointer = i;
+			if(first_ascii == -1){
+				first_ascii = ascii_first;
+			}
 		}
-		}
-		if(ascii_last >= 48 && ascii_last <= 57){
-			if(last_pointer == -1){
-				last_pointer = j;
-		}
+		if(isDigit(ascii_last)){
+			if(last_ascii == -1){
+				last_ascii = ascii_last;
+			}
 		}
 		
-		if(last_pointer != -1 && first_pointer != -1){
+		if(last_ascii != -1 && first_ascii != -1){
 			break;
 		}	
 			
 
 	}
 
-	if(first_pointer != -1 && last_pointer != -1){
-		int first_digit = s[first_pointer] - 48;
-		int last_digit = s[last_pointer] - 48;
+	if(first_ascii != -1 && last_ascii != -1){
+		int first_digit = first_ascii - 48;
+		int last_digit = last_ascii - 48;
 
 		int total = 10 * first_digit + last_digit;
 		return total;
